@@ -5,22 +5,22 @@ pipeline{
        
              stage('clean')                                                
              {  steps{
-                       sh 'mvn clean'
+                     bat 'mvn clean'
                      } 
              
              }
               
              
-             stage('test')
+             stage('Install')
              {  steps{
-                       sh 'mvn test'                                          
+                       bat 'mvn install'                                          
                      }                                                       
              
              }
              
-                stage('deploy')
+                stage('Deploy')
              {  steps{
-                       sh 'mvn deploy'
+                       bat 'mvn deploy'
                      } 
              
              }
