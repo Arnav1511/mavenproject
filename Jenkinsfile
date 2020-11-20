@@ -1,35 +1,21 @@
 pipeline{
-     agent any 
-     
-     stages{
-       
-             stage('clean')                                                
-             {  steps{
-                     bat 'mvn clean'
-                     } 
-             
+        agent any
+        stages{
+            stage('build'){
+              steps{
+              bat 'mvn -f C:/Users/Chauch/.jenkins/workspace/nexus-maven/my-app install'
              }
-              
-             
-             stage('Install')
-             {  steps{
-                       bat 'mvn install'                                          
-                     }                                                       
-             
+            }
+            
+            stage('test'){
+              steps{
+              echo 'Test Stage'
              }
-             
-                stage('Deploy')
-             {  steps{
-                       bat 'mvn deploy'
-                     } 
-             
+            }
+            stage('deploy'){
+              steps{
+              bat 'mvn -f C:/Users/Chauch/.jenkins/workspace/nexus-maven/my-app deploy'
              }
-           
-        
-           
-           
-          
-       }
- 
+            }
+        }
 }
-
